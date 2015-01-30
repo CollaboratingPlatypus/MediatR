@@ -1,18 +1,8 @@
-MediatR
+MediatR (CommonServiceLocator (with PCL version) version)
 =======
 
-Simple mediator implementation in .NET
+This is simply a version of MediatR which uses the [Portable.CommonServiceLocator](https://www.nuget.org/packages/Portable.CommonServiceLocator/) nuget package and not the [CommonServiceLocator](https://www.nuget.org/packages/CommonServiceLocator/) package.
 
-In-process messaging built on top of [Common Service Locator](http://commonservicelocator.codeplex.com/).
+Please see the [original project](https://github.com/jbogard/MediatR) for usuage/forks/etc.
 
-Supports request/response, commands, queries, notifications and events, synchronous and async with intelligent dispatching via C# generic variance.
-
-Examples in the [wiki](https://github.com/jbogard/MediatR/wiki).
-
-### Installing MediatR
-
-You should install [MediatR with NuGet](https://www.nuget.org/packages/MediatR):
-
-    Install-Package MediatR
-
-This command from Package Manager Console will download and install MediatR and all required dependencies.
+All credit to Jimmy Bogard!
