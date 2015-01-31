@@ -65,9 +65,9 @@
       <Project>{de7e7466-b06a-4e8a-9cfc-443464d55923}</Project>
       <Name>MediatR.Examples</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MediatR\MediatR.csproj">
+    <ProjectReference Include="..\Portable.MediatR\Portable.MediatR.csproj">
       <Project>{d0cdc351-9f10-4531-bdff-d9796487e9ce}</Project>
-      <Name>MediatR</Name>
+      <Name>Portable.MediaR</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

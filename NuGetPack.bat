@@ -1,1 +1,1 @@
-.\src\.nuget\NuGet.exe pack .\src\MediatR\MediatR.csproj -Prop Configuration=Release
+.\src\.nuget\NuGet.exe pack .\src\Portable.MediatR\Portable.MediatR.csproj -Prop Configuration=Release
