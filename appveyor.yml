@@ -23,7 +23,6 @@ build:
   verbosity: minimal
 after_build:
 - ps: ".\\src\\.nuget\\NuGet.exe pack \"src\\Portable.MediatR\\Portable.MediatR.csproj\" -Prop \"Configuration=$env:CONFIGURATION;Platform=AnyCPU\" -OutputDirectory $env:APPVEYOR_BUILD_FOLDER -Verbosity detailed -Build"
-- ps: "if ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n  Get-ChildItem Portable.MediatR*.nupkg | select -f 1 | Rename-Item -NewName {$_.Name -replace '.nupkg','-beta.nupkg'}\n}"
 test_script:
 - vstest.console /logger:Appveyor /TestAdapterPath:"%APPVEYOR_BUILD_FOLDER%\src\packages\Fixie.1.0.0.1\lib\net45" "%APPVEYOR_BUILD_FOLDER%\src\MediatR.Tests\bin\Release\MediatR.Tests.dll"
 artifacts:
