@@ -1,6 +1,6 @@
-![Master build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true&passingText=Master%20-%20OK)
+![Master build status](https://ci.appveyor.com/api/projects/status/30b4ylf70133mxf7/branch/master?svg=true&passingText=Master%20-%20OK)
 
-![Development build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/Development?svg=true&passingText=Development%20-%20OK)
+![Development build status](https://ci.appveyor.com/api/projects/status/30b4ylf70133mxf7/branch/Development?svg=true&passingText=Development%20-%20OK)
 
 Portable MediatR (CommonServiceLocator (with PCL version) version)
 =======
