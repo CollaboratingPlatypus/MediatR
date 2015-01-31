@@ -77,9 +77,9 @@
       <Project>{c309ce69-7b72-4b6f-8456-a8936f740cf6}</Project>
       <Name>MediatR.Examples.StructureMap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MediatR\MediatR.csproj">
+    <ProjectReference Include="..\Portable.MediatR\Portable.MediatR.csproj">
       <Project>{d0cdc351-9f10-4531-bdff-d9796487e9ce}</Project>
-      <Name>MediatR</Name>
+      <Name>Portable.MediaR</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
