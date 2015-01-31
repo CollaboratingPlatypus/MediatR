@@ -1,6 +1,6 @@
 version: 1.1.{build}
 install:
-- ps: "Write-Host $env:version\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'version' $($env:version + '-beta') \n}\nWrite-Host $env:version"
+- ps: "Write-Host $env:APPVEYOR_BUILD_VERSION\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'APPVEYOR_BUILD_VERSION' $($env:APPVEYOR_BUILD_VERSION + '-beta') \n}\nWrite-Host $env:APPVEYOR_BUILD_VERSION"
 branches:
   only:
   - master
