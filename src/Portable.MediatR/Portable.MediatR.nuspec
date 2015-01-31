@@ -4,7 +4,7 @@
     <id>Portable.$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
+    <authors>$author$, Wade Baglin</authors>
     <owners>$author$</owners>
     <licenseUrl>https://github.com/CollaboratingPlatypus/MediatR/MediatR/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/CollaboratingPlatypus/MediatR/MediatR</projectUrl>

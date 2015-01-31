@@ -6,11 +6,11 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Portable MediatR (unofficial)")]
+[assembly: AssemblyTitle("Portable MediatR")]
 [assembly: AssemblyDescription("Simple mediator implementation based on Common Service Locator (with PCL version)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Collaborating Platypus")]
-[assembly: AssemblyProduct("Portable MediatR (unofficial)")]
+[assembly: AssemblyProduct("Portable MediatR")]
 [assembly: AssemblyCopyright("Copyright © Collaborating Platypus 2015")]
 [assembly: NeutralResourcesLanguage("en")]
 

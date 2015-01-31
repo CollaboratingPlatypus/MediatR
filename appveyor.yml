@@ -1,8 +1,12 @@
-version: 1.0.{build}
+version: 1.1.{build}
+environment:
+  developmentversion: {version}-beta
+init:
+- ps: "Write-Host $env:version\nWrite-Host $env:developmentversion\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'version' '$env:developmentversion' \n}"
 branches:
   only:
   - master
-  - Development
+  - Development  
 skip_tags: true
 configuration: Release
 platform: Any CPU
@@ -19,7 +23,7 @@ build:
   project: src\MediatR.sln
   verbosity: minimal
 after_build:
-- ps: ".\\src\\.nuget\\NuGet.exe pack \"src\\Portable.MediatR\\Portable.MediatR.csproj\" -Prop \"Configuration=$env:CONFIGURATION;Platform=AnyCPU\" -OutputDirectory $env:APPVEYOR_BUILD_FOLDER -Verbosity detailed -Build\n\nWrite-Host $env:APPVEYOR_REPO_BRANCH\n\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n    Get-ChildItem Portable.MediatR*.nupkg | select -f 1 | Rename-Item -NewName {$_.Name -replace '.nupkg','-beta.nupkg'}    \n}"
+- ps: ".\\src\\.nuget\\NuGet.exe pack \"src\\Portable.MediatR\\Portable.MediatR.csproj\" -Prop \"Configuration=$env:CONFIGURATION;Platform=AnyCPU\" -OutputDirectory $env:APPVEYOR_BUILD_FOLDER -Verbosity detailed -Build\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n  Get-ChildItem Portable.MediatR*.nupkg | select -f 1 | Rename-Item -NewName {$_.Name -replace '.nupkg','-beta.nupkg'}\n}"
 test_script:
 - vstest.console /logger:Appveyor /TestAdapterPath:"%APPVEYOR_BUILD_FOLDER%\src\packages\Fixie.1.0.0.1\lib\net45" "%APPVEYOR_BUILD_FOLDER%\src\MediatR.Tests\bin\Release\MediatR.Tests.dll"
 artifacts:
