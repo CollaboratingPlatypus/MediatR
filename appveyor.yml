@@ -1,6 +1,7 @@
 version: 1.1.{build}
 install:
-- ps: "if ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'APPVEYOR_BUILD_VERSION' $($env:APPVEYOR_BUILD_VERSION + '-beta') \n}"
+- ps: "Set-AppveyorBuildVariable 'APPVEYOR_BUILD_INFO_VERSION' $env:APPVEYOR_BUILD_VERSION"
+- ps: "if ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'APPVEYOR_BUILD_INFO_VERSION' $($env:APPVEYOR_BUILD_INFO_VERSION + '-beta') \n}"
 branches:
   only:
   - master
@@ -11,9 +12,9 @@ platform: Any CPU
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '$(AppveyorBuildVariable)'
-  assembly_file_version: '$(AppveyorBuildVariable)'
-  assembly_informational_version: '$(AppveyorBuildVariable)'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '$(APPVEYOR_BUILD_INFO_VERSION)'
 cache: src\packages
 nuget:
   project_feed: true
