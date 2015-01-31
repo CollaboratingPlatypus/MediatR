@@ -1,6 +1,6 @@
 version: 1.1.{build}
 environment:
-  developmentversion: {version}-beta
+  developmentversion: $(version)-beta
 init:
 - ps: "Write-Host $env:version\nWrite-Host $env:developmentversion\nif ($env:APPVEYOR_REPO_BRANCH -ieq \"development\")\n{\n Set-AppveyorBuildVariable 'version' '$env:developmentversion' \n}"
 branches:
