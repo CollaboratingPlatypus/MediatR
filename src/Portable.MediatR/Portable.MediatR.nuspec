@@ -6,8 +6,8 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/CollaboratingPlatypus/MediatR/MediatR/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/CollaboratingPlatypus/MediatR/MediatR</projectUrl>
+    <licenseUrl>https://github.com/CollaboratingPlatypus/MediatR/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/CollaboratingPlatypus/MediatR</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright © Collaborating Platypus 2015</copyright>
