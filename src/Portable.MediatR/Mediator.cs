@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Practices.ServiceLocation;
-
-namespace MediatR
+﻿namespace MediatR
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.Practices.ServiceLocation;
+
     /// <summary>
-    ///     Defines a mediator to encapsulate request/response and publishing interaction patterns
+    /// Defines a mediator to encapsulate request/response and publishing interaction patterns
     /// </summary>
     public interface IMediator
     {
         /// <summary>
-        ///     Send a request to a single handler
+        /// Send a request to a single handler
         /// </summary>
         /// <typeparam name="TResponse">Response type</typeparam>
         /// <param name="request">Request object</param>
@@ -19,7 +20,7 @@ namespace MediatR
         TResponse Send<TResponse>(IRequest<TResponse> request);
 
         /// <summary>
-        ///     Asynchronously send a request to a single handler
+        /// Asynchronously send a request to a single handler 
         /// </summary>
         /// <typeparam name="TResponse">Response type</typeparam>
         /// <param name="request">Request object</param>
@@ -27,14 +28,14 @@ namespace MediatR
         Task<TResponse> SendAsync<TResponse>(IAsyncRequest<TResponse> request);
 
         /// <summary>
-        ///     Send a notification to multiple handlers
+        /// Send a notification to multiple handlers
         /// </summary>
         /// <typeparam name="TNotification">Notification type</typeparam>
         /// <param name="notification">Notification object</param>
         void Publish<TNotification>(TNotification notification) where TNotification : INotification;
 
         /// <summary>
-        ///     Asynchronously send a notification to multiple handlers
+        /// Asynchronously send a notification to multiple handlers
         /// </summary>
         /// <typeparam name="TNotification">Notification type</typeparam>
         /// <param name="notification">Notification object</param>
@@ -43,43 +44,40 @@ namespace MediatR
     }
 
     /// <summary>
-    ///     Default mediator implementation relying on Common Service Locator for resolving handlers
+    /// Default mediator implementation relying on Common Service Locator for resolving handlers
     /// </summary>
     public class Mediator : IMediator
     {
         private readonly ServiceLocatorProvider _serviceLocatorProvider;
 
         /// <summary>
-        ///     Constructs a Mediator instance with the supplied service locator provider delegate
+        /// Constructs a Mediator instance with the supplied service locator provider delegate
         /// </summary>
-        /// <param name="serviceLocatorProvider">
-        ///     Provider delegate for instantiating a service locator. Invoked on every
-        ///     request/notification
-        /// </param>
+        /// <param name="serviceLocatorProvider">Provider delegate for instantiating a service locator. Invoked on every request/notification</param>
         public Mediator(ServiceLocatorProvider serviceLocatorProvider)
         {
             _serviceLocatorProvider = serviceLocatorProvider;
         }
 
-        public virtual TResponse Send<TResponse>(IRequest<TResponse> request)
+        public TResponse Send<TResponse>(IRequest<TResponse> request)
         {
             var defaultHandler = GetHandler(request);
 
-            var result = defaultHandler.Handle(request);
+            TResponse result = defaultHandler.Handle(request);
 
             return result;
         }
 
-        public virtual async Task<TResponse> SendAsync<TResponse>(IAsyncRequest<TResponse> request)
+        public async Task<TResponse> SendAsync<TResponse>(IAsyncRequest<TResponse> request)
         {
             var defaultHandler = GetHandler(request);
 
-            var result = await defaultHandler.Handle(request);
+            TResponse result = await defaultHandler.Handle(request);
 
             return result;
         }
 
-        public virtual void Publish<TNotification>(TNotification notification) where TNotification : INotification
+        public void Publish<TNotification>(TNotification notification) where TNotification : INotification
         {
             var notificationHandlers = GetNotificationHandlers<TNotification>();
 
@@ -89,8 +87,7 @@ namespace MediatR
             }
         }
 
-        public virtual async Task PublishAsync<TNotification>(TNotification notification)
-            where TNotification : IAsyncNotification
+        public async Task PublishAsync<TNotification>(TNotification notification) where TNotification : IAsyncNotification
         {
             var notificationHandlers = GetAsyncNotificationHandlers<TNotification>();
 
@@ -102,35 +99,33 @@ namespace MediatR
 
         private static InvalidOperationException BuildException(object message)
         {
-            return
-                new InvalidOperationException("Handler was not found for request of type " + message.GetType() +
-                                              ".\r\nContainer or service locator not configured properly or handlers not registered with your container.");
+            return new InvalidOperationException("Handler was not found for request of type " + message.GetType() + ".\r\nContainer or service locator not configured properly or handlers not registered with your container.");
         }
 
         private RequestHandler<TResponse> GetHandler<TResponse>(IRequest<TResponse> request)
         {
-            var handlerType = typeof (IRequestHandler<,>).MakeGenericType(request.GetType(), typeof (TResponse));
-            var wrapperType = typeof (RequestHandler<,>).MakeGenericType(request.GetType(), typeof (TResponse));
+            var handlerType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
+            var wrapperType = typeof(RequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
             var handler = _serviceLocatorProvider().GetInstance(handlerType);
 
             if (handler == null)
                 throw BuildException(request);
 
             var wrapperHandler = Activator.CreateInstance(wrapperType, handler);
-            return (RequestHandler<TResponse>) wrapperHandler;
+            return (RequestHandler<TResponse>)wrapperHandler;
         }
 
         private AsyncRequestHandler<TResponse> GetHandler<TResponse>(IAsyncRequest<TResponse> request)
         {
-            var handlerType = typeof (IAsyncRequestHandler<,>).MakeGenericType(request.GetType(), typeof (TResponse));
-            var wrapperType = typeof (AsyncRequestHandler<,>).MakeGenericType(request.GetType(), typeof (TResponse));
+            var handlerType = typeof(IAsyncRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
+            var wrapperType = typeof(AsyncRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
             var handler = _serviceLocatorProvider().GetInstance(handlerType);
 
             if (handler == null)
                 throw BuildException(request);
 
             var wrapperHandler = Activator.CreateInstance(wrapperType, handler);
-            return (AsyncRequestHandler<TResponse>) wrapperHandler;
+            return (AsyncRequestHandler<TResponse>)wrapperHandler;
         }
 
         private IEnumerable<INotificationHandler<TNotification>> GetNotificationHandlers<TNotification>()
@@ -150,8 +145,7 @@ namespace MediatR
             public abstract TResult Handle(IRequest<TResult> message);
         }
 
-        private class RequestHandler<TCommand, TResult> : RequestHandler<TResult>
-            where TCommand : IRequest<TResult>
+        private class RequestHandler<TCommand, TResult> : RequestHandler<TResult> where TCommand : IRequest<TResult>
         {
             private readonly IRequestHandler<TCommand, TResult> _inner;
 
@@ -162,7 +156,7 @@ namespace MediatR
 
             public override TResult Handle(IRequest<TResult> message)
             {
-                return _inner.Handle((TCommand) message);
+                return _inner.Handle((TCommand)message);
             }
         }
 
@@ -183,7 +177,7 @@ namespace MediatR
 
             public override Task<TResult> Handle(IAsyncRequest<TResult> message)
             {
-                return _inner.Handle((TCommand) message);
+                return _inner.Handle((TCommand)message);
             }
         }
     }

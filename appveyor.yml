@@ -24,7 +24,7 @@ build:
 after_build:
 - ps: ".\\src\\.nuget\\NuGet.exe pack \"src\\Portable.MediatR\\Portable.MediatR.csproj\" -Prop \"Configuration=$env:CONFIGURATION;Platform=AnyCPU\" -OutputDirectory $env:APPVEYOR_BUILD_FOLDER -Verbosity detailed -Build"
 test_script:
-- vstest.console /logger:Appveyor /TestAdapterPath:"%APPVEYOR_BUILD_FOLDER%\src\packages\Fixie.1.0.0.1\lib\net45" "%APPVEYOR_BUILD_FOLDER%\src\MediatR.Tests\bin\Release\MediatR.Tests.dll"
+- vstest.console /logger:Appveyor /TestAdapterPath:"%APPVEYOR_BUILD_FOLDER%\src\packages\Fixie.1.0.0.1\lib\net45" "%APPVEYOR_BUILD_FOLDER%\src\Portable.MediatR.Tests\bin\Release\Portable.MediatR.Tests.dll"
 artifacts:
 - path: Portable.MediatR*.nupkg
 deploy:

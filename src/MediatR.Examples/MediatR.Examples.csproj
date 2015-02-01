@@ -53,9 +53,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Portable.MediatR\Portable.MediatR.csproj">
+    <ProjectReference Include="..\MediatR\MediatR.csproj">
       <Project>{d0cdc351-9f10-4531-bdff-d9796487e9ce}</Project>
-      <Name>Portable.MediaR</Name>
+      <Name>MediatR</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
