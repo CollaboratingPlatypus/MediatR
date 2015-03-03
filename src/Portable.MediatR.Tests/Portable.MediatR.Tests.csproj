@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fixie">
+    <Reference Include="Fixie, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Fixie.1.0.0.1\lib\net45\Fixie.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
