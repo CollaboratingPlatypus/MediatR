@@ -8,6 +8,7 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/CollaboratingPlatypus/MediatR/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/CollaboratingPlatypus/MediatR</projectUrl>
+    <iconUrl><![CDATA[https://avatars2.githubusercontent.com/u/10597031?s=200]]></iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright © Collaborating Platypus 2015</copyright>
