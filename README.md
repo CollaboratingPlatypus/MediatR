@@ -1,3 +1,9 @@
+# Project end-of-life notice
+
+##Because MediaR now in-process messaging with no dependencies, please do not use this fork, as there no longer a need to support the PCL version of CSL. 
+
+***
+
 ![Master build status](https://ci.appveyor.com/api/projects/status/30b4ylf70133mxf7/branch/master?svg=true&passingText=Master%20-%20OK)
 
 ![Development build status](https://ci.appveyor.com/api/projects/status/30b4ylf70133mxf7/branch/Development?svg=true&passingText=Development%20-%20OK)
