@@ -1,6 +1,6 @@
 # Project end-of-life notice
 
-##Because MediaR now in-process messaging with no dependencies, please do not use this fork, as there no longer a need to support the PCL version of CSL. 
+##MediaR now "in-process messaging with no dependencies". Please do not use this fork, as there is nolonger a need to support the PCL version of CSL. 
 
 ***
 
